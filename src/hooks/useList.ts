@@ -7,12 +7,17 @@ export const useList = (keyword: string) => {
   useEffect(() => {
     const getSickList = async () => {
       try {
-        await getSickApi(keyword).then((res) => setList(res));
+        const res = await getSickApi(keyword);
+        if (res.length > 10) {
+          setList(res.slice(0, 10));
+        } else {
+          setList(res);
+        }
       } catch (err) {
         console.log(err);
       }
     };
-    getSickList();
+    if (keyword.length > 0) getSickList();
   }, [keyword]);
   return list;
 };
