@@ -8,6 +8,7 @@ import {
 import { SearchOutlined } from "@ant-design/icons";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useList } from "../../hooks/useList";
+import KeywordDropBox from "../../components/KeywordDropBox";
 
 export default function Sick() {
   const [sickKeyword, setSickKeyword] = useState("");
@@ -34,6 +35,7 @@ export default function Sick() {
         <SearchContainer>
           <SearchInput onChange={changeKeyword} />
           <SearchOutlined />
+          <KeywordDropBox />
         </SearchContainer>
       </BackgroundContainer>
       <BackgroundImg></BackgroundImg>

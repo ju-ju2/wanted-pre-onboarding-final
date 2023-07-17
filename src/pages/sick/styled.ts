@@ -32,7 +32,7 @@ export const Title = styled.p`
 `;
 
 export const SearchContainer = styled.div`
-  width: 50%;
+  width: 500px;
   height: 50px;
   border: 1px solid white;
   border-radius: 10px;
@@ -41,6 +41,7 @@ export const SearchContainer = styled.div`
   align-items: center;
   padding: 10px;
   color: white;
+  position: relative;
 `;
 export const SearchInput = styled.input`
   width: 100%;
