@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import {
   CommendedList,
   EmptyText,
@@ -26,9 +25,9 @@ export default function KeywordDropBox({ list, isFocus }: SickDataProps) {
           {list.length !== 0 ? (
             <CommendedList>
               {list.map((el) => (
-                <RowList>
+                <RowList key={el.sickCd}>
                   <SearchIcon />
-                  <ListItem key={el.sickCd}>{el.sickNm}</ListItem>
+                  <ListItem>{el.sickNm}</ListItem>
                 </RowList>
               ))}
             </CommendedList>
