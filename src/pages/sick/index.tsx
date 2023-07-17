@@ -11,17 +11,17 @@ import { useList } from "../../hooks/useList";
 
 export default function Sick() {
   const [sickKeyword, setSickKeyword] = useState("");
-  const [changeKeyword, setChangeKeyword] = useState("");
-  const changeSickApi = (e: ChangeEvent<HTMLInputElement>) => {
-    setChangeKeyword(e.target.value);
+  const [keyword, setKeyword] = useState("");
+  const changeKeyword = (e: ChangeEvent<HTMLInputElement>) => {
+    setKeyword(e.target.value);
   };
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setSickKeyword(changeKeyword);
+      setSickKeyword(keyword);
     }, 300);
     return () => clearTimeout(timer);
-  }, [changeKeyword]);
+  }, [keyword]);
 
   const list = useList(sickKeyword);
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function Sick() {
       <BackgroundContainer>
         <Title>임상시험 찾기</Title>
         <SearchContainer>
-          <SearchInput onChange={changeSickApi} />
+          <SearchInput onChange={changeKeyword} />
           <SearchOutlined />
         </SearchContainer>
       </BackgroundContainer>
