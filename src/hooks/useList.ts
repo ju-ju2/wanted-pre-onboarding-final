@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { getSickApi } from "../apis/getSickApi";
+import { SickApi } from "../apis/getSickApi";
 
 export const useList = (keyword: string) => {
   const [list, setList] = useState([]);
+  const getSickApi = SickApi();
 
   useEffect(() => {
     const getSickList = async () => {

@@ -6,7 +6,7 @@ import {
   Title,
 } from "./styled";
 import { SearchOutlined } from "@ant-design/icons";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { useList } from "../../hooks/useList";
 import KeywordDropBox from "../../components/KeywordDropBox";
 import { useDebounce } from "../../hooks/useDebounce";
@@ -19,9 +19,6 @@ export default function Sick() {
   const { setKeyword, debouncedKeyword } = useDebounce();
 
   const list = useList(debouncedKeyword);
-  useEffect(() => {
-    if (list.length > 0) console.log(list);
-  }, [list]);
 
   const [isFocus, setFocus] = useState(false);
 
