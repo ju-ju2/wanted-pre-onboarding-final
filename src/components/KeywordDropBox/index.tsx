@@ -15,25 +15,28 @@ interface SickData {
 }
 interface SickDataProps {
   list: SickData[];
+  isFocus: boolean;
 }
-export default function KeywordDropBox({ list }: SickDataProps) {
+export default function KeywordDropBox({ list, isFocus }: SickDataProps) {
   return (
     <>
-      <Wrapper>
-        <SearchTitle>추천 검색어</SearchTitle>
-        {list.length !== 0 ? (
-          <CommendedList>
-            {list.map((el) => (
-              <RowList>
-                <SearchIcon />
-                <ListItem key={el.sickCd}>{el.sickNm}</ListItem>
-              </RowList>
-            ))}
-          </CommendedList>
-        ) : (
-          <EmptyText>추천 검색어가 없습니다.</EmptyText>
-        )}
-      </Wrapper>
+      {isFocus && (
+        <Wrapper>
+          <SearchTitle>추천 검색어</SearchTitle>
+          {list.length !== 0 ? (
+            <CommendedList>
+              {list.map((el) => (
+                <RowList>
+                  <SearchIcon />
+                  <ListItem key={el.sickCd}>{el.sickNm}</ListItem>
+                </RowList>
+              ))}
+            </CommendedList>
+          ) : (
+            <EmptyText>추천 검색어가 없습니다.</EmptyText>
+          )}
+        </Wrapper>
+      )}
     </>
   );
 }

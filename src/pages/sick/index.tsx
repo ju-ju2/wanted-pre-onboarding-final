@@ -28,14 +28,21 @@ export default function Sick() {
   useEffect(() => {
     if (list.length > 0) console.log(list);
   }, [list]);
+
+  const [isFocus, setFocus] = useState(false);
+
   return (
     <>
       <BackgroundContainer>
         <Title>임상시험 찾기</Title>
         <SearchContainer>
-          <SearchInput onChange={changeKeyword} />
+          <SearchInput
+            onChange={changeKeyword}
+            onFocus={() => setFocus(true)}
+            onBlur={() => setFocus(false)}
+          />
           <SearchOutlined />
-          <KeywordDropBox />
+          <KeywordDropBox list={list} isFocus={isFocus} />
         </SearchContainer>
       </BackgroundContainer>
       <BackgroundImg></BackgroundImg>
