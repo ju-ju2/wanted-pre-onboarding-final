@@ -17,7 +17,11 @@ export const useList = (keyword: string) => {
         console.log(err);
       }
     };
-    if (keyword.length > 0) getSickList();
+    if (keyword.length > 0) {
+      getSickList();
+    } else {
+      setList([]);
+    }
   }, [keyword]);
   return list;
 };
