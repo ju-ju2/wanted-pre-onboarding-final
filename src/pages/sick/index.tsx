@@ -9,22 +9,16 @@ import { SearchOutlined } from "@ant-design/icons";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useList } from "../../hooks/useList";
 import KeywordDropBox from "../../components/KeywordDropBox";
+import { useDebounce } from "../../hooks/useDebounce";
 
 export default function Sick() {
-  const [sickKeyword, setSickKeyword] = useState("");
-  const [keyword, setKeyword] = useState("");
   const changeKeyword = (e: ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value);
   };
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setSickKeyword(keyword);
-    }, 300);
-    return () => clearTimeout(timer);
-  }, [keyword]);
+  const { setKeyword, debouncedKeyword } = useDebounce();
 
-  const list = useList(sickKeyword);
+  const list = useList(debouncedKeyword);
   useEffect(() => {
     if (list.length > 0) console.log(list);
   }, [list]);
