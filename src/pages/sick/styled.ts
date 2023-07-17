@@ -16,7 +16,7 @@ export const BackgroundImg = styled.div`
   left: 0;
   z-index: -1;
   width: 100%;
-  height: 400px;
+  height: 100%;
   background-image: url("https://images.unsplash.com/photo-1606206591513-adbfbdd7a177?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80");
 
   background-size: cover;
@@ -36,6 +36,7 @@ export const SearchContainer = styled.div`
   height: 50px;
   border: 1px solid white;
   border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
