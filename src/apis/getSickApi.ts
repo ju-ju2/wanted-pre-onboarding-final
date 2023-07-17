@@ -1,28 +1,23 @@
 import axios from "axios";
+import { useCache } from "../hooks/useCache";
 
-interface CacheData {
-  sickCd: string;
-  sickNm: string;
-}
+export const SickApi = () => {
+  const { cache, put } = useCache();
+  const getSickApi = async (keyword: string) => {
+    try {
+      if (cache[keyword]) {
+        return cache[keyword];
+      }
+      const res = await axios.get(`http://localhost:4000/sick?q=${keyword}`);
+      const data = res.data;
+      console.info("calling api");
+      put(keyword, data);
 
-interface CacheType {
-  [key: string]: CacheData[];
-}
-
-const cache: CacheType = {};
-
-export const getSickApi = async (keyword: string) => {
-  try {
-    if (cache[keyword]) {
-      console.log("캐싱된 데이터");
-      return cache[keyword];
+      return data;
+    } catch (err) {
+      console.log(err);
     }
-    const res = await axios.get(`http://localhost:4000/sick?q=${keyword}`);
-    const data = res.data;
-    console.log("캐싱이 안된 새 데이터");
-    cache[keyword] = data;
-    return data;
-  } catch (err) {
-    console.log(err);
-  }
+  };
+
+  return getSickApi;
 };
