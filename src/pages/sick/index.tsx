@@ -6,14 +6,28 @@ import {
   Title,
 } from "./styled";
 import { SearchOutlined } from "@ant-design/icons";
+import { ChangeEvent, useEffect, useState } from "react";
 
 export default function Sick() {
+  const [sickKeyword, setSickKeyword] = useState("");
+  const [changeKeyword, setChangeKeyword] = useState("");
+  const changeSickApi = (e: ChangeEvent<HTMLInputElement>) => {
+    setChangeKeyword(e.target.value);
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSickKeyword(changeKeyword);
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [changeKeyword]);
+
   return (
     <>
       <BackgroundContainer>
         <Title>임상시험 찾기</Title>
         <SearchContainer>
-          <SearchInput />
+          <SearchInput onChange={changeSickApi} />
           <SearchOutlined />
         </SearchContainer>
       </BackgroundContainer>
