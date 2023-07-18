@@ -11,5 +11,5 @@ export const useDebounce = () => {
     return () => clearTimeout(timer);
   }, [keyword]);
 
-  return { setKeyword, debouncedKeyword };
+  return { keyword, setKeyword, debouncedKeyword };
 };

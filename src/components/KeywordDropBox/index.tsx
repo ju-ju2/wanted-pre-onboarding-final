@@ -14,12 +14,12 @@ interface SickData {
 }
 interface SickDataProps {
   list: SickData[];
-  isFocus: boolean;
+  keyword: string;
 }
-export default function KeywordDropBox({ list, isFocus }: SickDataProps) {
+export default function KeywordDropBox({ list, keyword }: SickDataProps) {
   return (
     <>
-      {isFocus && (
+      {keyword && (
         <Wrapper>
           <SearchTitle>추천 검색어</SearchTitle>
           {list.length !== 0 ? (

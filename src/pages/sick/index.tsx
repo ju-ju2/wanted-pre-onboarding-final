@@ -6,7 +6,7 @@ import {
   Title,
 } from "./styled";
 import { SearchOutlined } from "@ant-design/icons";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent } from "react";
 import { useList } from "../../hooks/useList";
 import KeywordDropBox from "../../components/KeywordDropBox";
 import { useDebounce } from "../../hooks/useDebounce";
@@ -16,24 +16,18 @@ export default function Sick() {
     setKeyword(e.target.value);
   };
 
-  const { setKeyword, debouncedKeyword } = useDebounce();
+  const { keyword, setKeyword, debouncedKeyword } = useDebounce();
 
   const list = useList(debouncedKeyword);
-
-  const [isFocus, setFocus] = useState(false);
 
   return (
     <>
       <BackgroundContainer>
         <Title>임상시험 찾기</Title>
         <SearchContainer>
-          <SearchInput
-            onChange={changeKeyword}
-            onFocus={() => setFocus(true)}
-            onBlur={() => setFocus(false)}
-          />
+          <SearchInput onChange={changeKeyword} />
           <SearchOutlined />
-          <KeywordDropBox list={list} isFocus={isFocus} />
+          <KeywordDropBox list={list} keyword={keyword} />
         </SearchContainer>
       </BackgroundContainer>
       <BackgroundImg></BackgroundImg>
