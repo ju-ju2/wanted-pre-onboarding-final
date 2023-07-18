@@ -30,7 +30,11 @@ export default function Sick() {
       <BackgroundContainer>
         <Title>임상시험 찾기</Title>
         <SearchContainer>
-          <SearchInput onChange={changeKeyword} onKeyDown={changeFocusIndex} />
+          <SearchInput
+            onChange={changeKeyword}
+            onKeyDown={changeFocusIndex}
+            value={keyword}
+          />
           <SearchOutlined />
           <KeywordDropBox
             list={list}

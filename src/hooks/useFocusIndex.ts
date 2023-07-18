@@ -4,7 +4,6 @@ export const useFocusIndex = (maxLength: number) => {
   const [focusIndex, setFocusIndex] = useState(-1);
 
   const changeFocusIndex = (e: KeyboardEvent<HTMLInputElement>) => {
-    console.log(e.key);
     if (e.key === "ArrowDown") {
       focusIndex >= maxLength - 1
         ? setFocusIndex(-1)
