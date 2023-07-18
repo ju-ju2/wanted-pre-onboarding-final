@@ -1,6 +1,6 @@
+import { KeyboardEvent, useState } from "react";
 import {
   CommendedList,
-  EmptyText,
   ListItem,
   RowList,
   SearchIcon,
@@ -15,25 +15,31 @@ interface SickData {
 interface SickDataProps {
   list: SickData[];
   keyword: string;
+  focusIndex: number;
 }
-export default function KeywordDropBox({ list, keyword }: SickDataProps) {
+export default function KeywordDropBox({
+  list,
+  keyword,
+  focusIndex,
+}: SickDataProps) {
   return (
     <>
       {keyword && (
         <Wrapper>
           <SearchTitle>추천 검색어</SearchTitle>
-          {list.length !== 0 ? (
-            <CommendedList>
-              {list.map((el) => (
-                <RowList key={el.sickCd}>
+          <CommendedList>
+            <RowList focus={focusIndex === -1}>
+              <SearchIcon />
+              <ListItem style={{ color: "gray" }}>{keyword} 검색</ListItem>
+            </RowList>
+            {list.length !== 0 &&
+              list.map((el, index) => (
+                <RowList key={el.sickCd} focus={focusIndex === index}>
                   <SearchIcon />
                   <ListItem>{el.sickNm}</ListItem>
                 </RowList>
               ))}
-            </CommendedList>
-          ) : (
-            <EmptyText>추천 검색어가 없습니다.</EmptyText>
-          )}
+          </CommendedList>
         </Wrapper>
       )}
     </>

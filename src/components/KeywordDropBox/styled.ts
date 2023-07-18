@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 15px;
+  padding: 15px 0;
   position: absolute;
   left: 0;
   top: 60px;
@@ -21,9 +21,11 @@ export const Wrapper = styled.div`
 export const SearchTitle = styled.p`
   color: grey;
   margin: 10px 0;
+  padding-left: 15px;
 `;
 
 export const CommendedList = styled.ul`
+  width: 100%;
   list-style: none;
 `;
 
@@ -39,11 +41,14 @@ export const ListItem = styled.li`
 `;
 export const SearchIcon = styled(SearchOutlined)`
   color: black;
+  padding-left: 15px;
 `;
-export const RowList = styled.div`
+export const RowList = styled.div<{ focus: boolean }>`
+  width: 100%;
   display: flex;
   gap: 10px;
   align-items: center;
+  background-color: ${(p) => (p.focus ? "aliceblue" : "white")};
 `;
 
 export const EmptyText = styled.p`
